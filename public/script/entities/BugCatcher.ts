@@ -283,7 +283,7 @@ export class BugCatcher extends Entity {
 		} else {
 			this.currentSpeed = 0;
 			this.direction = subtract(
-				this.target.position,
+				this.target!.position,
 				this.position
 			) as Direction;
 			this.sprite =
@@ -321,12 +321,20 @@ export class BugCatcher extends Entity {
 			this.message = "I'll leave you be.";
 		} else if (
 			this.stateData.countup > 27000 &&
-			this.stateData.countup < 30000
+			this.stateData.countup < 31000
 		) {
 			this.message = "Goodbye!";
-		} else if (this.stateData.countup > 30000) {
+		}
+
+		if (this.stateData.countup > 28000) {
 			this.direction = [1, 0];
 			this.currentSpeed = 0.4;
+		}
+
+		if (this.currentSpeed > 0) {
+			this.sprite =
+				this.direction[0] > 0 ? huntingSpriteRight : huntingSpriteLeft;
+		} else {
 			this.sprite =
 				this.direction[0] > 0 ? idleSpriteRight : idleSpriteLeft;
 		}
