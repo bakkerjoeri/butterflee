@@ -1,35 +1,8 @@
 import { clearCanvas, setupCanvas } from "heks";
 import { Loop } from "./engine/Loop";
 import { Entity } from "./engine/Entity";
-
-class World extends Entity {
-	constructor() {
-		super();
-		this.entities.push(new Butterfly([120, 80]));
-	}
-}
-
-class Butterfly extends Entity {
-	public size = 10;
-
-	public draw(
-		time: number,
-		elapsed: number,
-		canvas: HTMLCanvasElement,
-		context: CanvasRenderingContext2D
-	) {
-		context.fillStyle = "hsl(290, 100%, 50%)";
-		context.beginPath();
-		context.arc(
-			this.position[0],
-			this.position[1],
-			this.size / 2,
-			0,
-			Math.PI * 2
-		);
-		context.fill();
-	}
-}
+import { keyboard } from "./engine/Keyboard";
+import { World } from "./entities/World";
 
 function update(root: Entity, time: number, elapsed: number) {
 	root.update(time, elapsed);
@@ -52,6 +25,7 @@ const { canvas, context } = setupCanvas(".game", [240, 160], true);
 const rootEntity = new World();
 const loop = new Loop((time, elapsed) => {
 	update(rootEntity, time, elapsed);
+	keyboard.afterUpdate();
 	draw(rootEntity, time, elapsed, canvas, context);
 });
 loop.start();
