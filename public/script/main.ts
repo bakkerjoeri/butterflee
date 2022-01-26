@@ -6,7 +6,7 @@ import { World } from "./entities/World";
 import { registerFont } from "./engine/text";
 import metrics from "../fonts/Birdseed/metrics";
 
-registerFont("Birdseed", metrics, "/fonts/Birdseed/atlas.png");
+registerFont("Birdseed", metrics, "fonts/Birdseed/atlas.png");
 
 function update(root: Entity, time: number, elapsed: number) {
 	root.update(time, elapsed);

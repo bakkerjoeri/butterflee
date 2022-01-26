@@ -8,55 +8,55 @@ import { normalizeTo } from "../utilities/normalizeTo";
 import { Butterfly } from "./Butterfly";
 
 const idleSpriteLeft = new Sprite(
-	"/sprites/bugcatcher-left.png",
+	"sprites/bugcatcher-left.png",
 	[16, 32],
 	0,
 	1,
 	1
 );
 const idleSpriteRight = new Sprite(
-	"/sprites/bugcatcher-right.png",
+	"sprites/bugcatcher-right.png",
 	[16, 32],
 	0,
 	1,
 	1
 );
 const huntingSpriteLeft = new Sprite(
-	"/sprites/bugcatcher-left.png",
+	"sprites/bugcatcher-left.png",
 	[16, 32],
 	1,
 	3,
 	10
 );
 const huntingSpriteRight = new Sprite(
-	"/sprites/bugcatcher-right.png",
+	"sprites/bugcatcher-right.png",
 	[16, 32],
 	1,
 	3,
 	10
 );
 const prepareForLungingSpriteLeft = new Sprite(
-	"/sprites/bugcatcher-left.png",
+	"sprites/bugcatcher-left.png",
 	[16, 32],
 	4
 );
 const prepareForLungingSpriteRight = new Sprite(
-	"/sprites/bugcatcher-right.png",
+	"sprites/bugcatcher-right.png",
 	[16, 32],
 	4
 );
 const lungingSpriteLeft = new Sprite(
-	"/sprites/bugcatcher-left.png",
+	"sprites/bugcatcher-left.png",
 	[16, 32],
 	7
 );
 const lungingSpriteRight = new Sprite(
-	"/sprites/bugcatcher-right.png",
+	"sprites/bugcatcher-right.png",
 	[16, 32],
 	7
 );
 const catchingSpriteLeft = new Sprite(
-	"/sprites/bugcatcher-left.png",
+	"sprites/bugcatcher-left.png",
 	[16, 32],
 	4,
 	3,
@@ -64,7 +64,7 @@ const catchingSpriteLeft = new Sprite(
 	false
 );
 const catchingSpriteRight = new Sprite(
-	"/sprites/bugcatcher-right.png",
+	"sprites/bugcatcher-right.png",
 	[16, 32],
 	4,
 	3,

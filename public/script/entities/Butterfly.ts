@@ -10,14 +10,14 @@ export class Butterfly extends Entity {
 	private direction: Direction = [0, 0];
 	private sprite: Sprite;
 	private spriteLeft = new Sprite(
-		"/sprites/butterfly.png",
+		"sprites/butterfly.png",
 		[16, 16],
 		0,
 		4,
 		10
 	);
 	private spriteRight = new Sprite(
-		"/sprites/butterfly-right.png",
+		"sprites/butterfly-right.png",
 		[16, 16],
 		0,
 		4,
