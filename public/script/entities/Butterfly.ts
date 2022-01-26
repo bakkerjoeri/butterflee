@@ -9,10 +9,17 @@ export class Butterfly extends Entity {
 	public isCaught: boolean = false;
 	private direction: Direction = [0, 0];
 	private sprite: Sprite;
-	private spriteLeft = new Sprite("/sprites/butterfly.png", [16, 16], 4, 10);
+	private spriteLeft = new Sprite(
+		"/sprites/butterfly.png",
+		[16, 16],
+		0,
+		4,
+		10
+	);
 	private spriteRight = new Sprite(
 		"/sprites/butterfly-right.png",
 		[16, 16],
+		0,
 		4,
 		10
 	);
@@ -47,6 +54,10 @@ export class Butterfly extends Entity {
 			this.direction[0] = -1;
 		}
 
+		if (keyboard.isKeyDown("d") || keyboard.isKeyDown("ArrowRight")) {
+			this.direction[0] = 1;
+		}
+
 		const movementSpeed = 1;
 
 		this.position = add(
@@ -69,6 +80,10 @@ export class Butterfly extends Entity {
 		canvas: HTMLCanvasElement,
 		context: CanvasRenderingContext2D
 	) {
+		if (this.isCaught) {
+			return;
+		}
+
 		this.sprite.draw(context, this.position);
 	}
 }

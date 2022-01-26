@@ -14,20 +14,26 @@ export class Sprite {
 	private currentFrameIndex: number = 0;
 	private image: HTMLImageElement;
 	private frames: SpriteFrame[] = [];
-	private offset: Size;
+	private offset: Size = [0, 0];
+	private startOfAnimation: number | undefined;
 
 	constructor(
 		path: string,
 		frameSize: Size,
+		startingFrame: number = 0,
 		amountOfFrames: number = 1,
 		framesPerSecond: number = 1,
-		offset: Size = [0, 0]
+		looping: boolean = true
 	) {
 		this.image = getImage(path);
 		this.framesPerSecond = framesPerSecond;
-		this.offset = offset;
+		this.looping = looping;
 
-		for (let f = 0; f < amountOfFrames; f += 1) {
+		for (
+			let f = startingFrame;
+			f < startingFrame + amountOfFrames;
+			f += 1
+		) {
 			this.frames.push({
 				origin: multiplyByComponents(frameSize, [f, 0]) as Position,
 				size: frameSize,
@@ -44,10 +50,15 @@ export class Sprite {
 			return;
 		}
 
+		if (this.startOfAnimation === undefined) {
+			this.startOfAnimation = time;
+		}
+
+		const elapsed = time - this.startOfAnimation;
 		this.currentFrameIndex = calculateNewFrameIndex(
 			this.frames.length,
 			this.framesPerSecond,
-			time,
+			elapsed,
 			this.looping
 		);
 	}
@@ -88,7 +99,7 @@ function calculateNewFrameIndex(
 	}
 
 	return Math.min(
-		Math.round(elapsedTime / 1000) / framesPerSecond,
+		Math.round(elapsedTime / (1000 / framesPerSecond)),
 		amountOfFrames - 1
 	);
 }
